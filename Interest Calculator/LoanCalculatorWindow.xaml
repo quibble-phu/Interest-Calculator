@@ -1,0 +1,53 @@
+﻿<Window x:Class="Interest_Calculator.LoanCalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="เครื่องคำนวณสินเชื่อ" 
+        Height="450" Width="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="คำนวณสินเชื่อและดอกเบี้ย" FontSize="22" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="ยอดเงินกู้ (บาท):" VerticalAlignment="Center" Margin="0,5,10,5"/>
+            <TextBox   Grid.Row="0" Grid.Column="1" x:Name="LoanAmountTextBox" VerticalAlignment="Center" Margin="0,5"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="อัตราดอกเบี้ย:" VerticalAlignment="Center" Margin="0,5,10,5"/>
+            <TextBox   Grid.Row="1" Grid.Column="1" x:Name="InterestRateTextBox" VerticalAlignment="Center" Margin="0,5"/>
+            <ComboBox  Grid.Row="1" Grid.Column="2" x:Name="InterestRateUnitComboBox" SelectedIndex="0" VerticalAlignment="Center" Margin="5,5">
+                <ComboBoxItem Content="ต่อปี"/>
+                <ComboBoxItem Content="ต่อเดือน"/>
+            </ComboBox>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="ระยะเวลา:" VerticalAlignment="Center" Margin="0,5,10,5"/>
+            <TextBox   Grid.Row="2" Grid.Column="1" x:Name="LoanTermTextBox" VerticalAlignment="Center" Margin="0,5"/>
+            <ComboBox  Grid.Row="2" Grid.Column="2" x:Name="LoanTermUnitComboBox" SelectedIndex="0" VerticalAlignment="Center" Margin="5,5">
+                <ComboBoxItem Content="ปี"/>
+                <ComboBoxItem Content="เดือน"/>
+            </ComboBox>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,25,0,0">
+            <Button  Content="คำนวณ" Width="120" FontWeight="Bold" IsDefault="True" Click="CalculateButton_Click"/>
+        </StackPanel>
+        <Button Content="ย้อนกลับ" Click="Button_Click_back" Margin="175,25,125,0" Grid.Row="2"/>
+    </Grid>
+</Window>

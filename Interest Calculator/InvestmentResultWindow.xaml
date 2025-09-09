@@ -1,0 +1,31 @@
+﻿<Window x:Class="Interest_Calculator.InvestmentResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ผลการคำนวณการลงทุน" 
+        Height="500" Width="650"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,15">
+            <TextBlock Text="สรุปผลการคำนวณ" FontSize="20" FontWeight="Bold" Foreground="#005A9C"/>
+
+            <TextBlock x:Name="FinalValueTextBlock" FontSize="18" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <DataGrid x:Name="ResultsDataGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding}" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ปีที่" Binding="{Binding Year}" Width="60"/>
+                <DataGridTextColumn Header="เงินต้นปี" Binding="{Binding StartBalance, StringFormat=N2}" Width="*"/>
+                <DataGridTextColumn Header="เงินลงทุนเพิ่ม" Binding="{Binding TotalContribution, StringFormat=N2}" Width="*"/>
+                <DataGridTextColumn Header="ผลตอบแทน" Binding="{Binding InterestEarned, StringFormat=N2}" Width="*"/>
+                <DataGridTextColumn Header="เงินปลายปี" Binding="{Binding EndBalance, StringFormat=N2}" Width="*" FontWeight="Bold"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
